@@ -1,6 +1,7 @@
 import Achievenments from '@/component/Achievenments';
 import Banner from '@/component/Banner';
 import Events from '@/component/Events';
+import Howwework from '@/component/Howwework';
 import Services from '@/component/Services';
 import Testimonials from '@/component/Testimonials';
 import WhyChooseUs from '@/component/WhyChooseUs';
@@ -17,6 +18,7 @@ const Home = () => {
      <Services/>
      <WhyChooseUs/> 
      <Testimonials/>
+     <Howwework/>
     </div>
   );
 };

@@ -40,3 +40,12 @@ export const reasonsDatas = async () => {
   const data = await res.json();
   return data;
 };
+ export const howweworkDatas = async () => {
+  const res = await fetch("http://localhost:5000/howwework");
+  if (!res.ok) {
+    throw new Error("failed to fetche the services dataa");
+  }
+
+  const data = await res.json();
+  return data;
+};
