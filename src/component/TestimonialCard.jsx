@@ -9,7 +9,7 @@ const TestimonialCard = ({ review }) => {
     .join("")
     .toUpperCase();
   return (
-    <div className="mx-3 flex h-[260px] w-[320px] shrink-0 flex-col justify-between rounded-2xl border border-[#eee5e9] bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:w-[370px]">
+    <div className="mx-2 sm:mx-3 flex h-[260px] w-[280px] sm:w-[320px] md:w-[370px] shrink-0 flex-col justify-between rounded-2xl border border-[#eee5e9] bg-white p-5 sm:p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
       {/* Rating and Quote */}
       <div>
         <div className="mb-4 flex items-center justify-between">
@@ -39,10 +39,10 @@ const TestimonialCard = ({ review }) => {
           <img
             src={review.clientImage}
             alt={review.clientName}
-            className="h-12 w-12 rounded-full border-2 border-[#722F52]/20 object-cover"
+            className="h-12 w-12 shrink-0 rounded-full border-2 border-[#722F52]/20 object-cover"
           />
         ) : (
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#722F52]/10 font-bold text-[#722F52]">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#722F52]/10 font-bold text-[#722F52]">
             {initials}
           </div>
         )}

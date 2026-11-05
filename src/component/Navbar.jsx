@@ -1,9 +1,14 @@
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
-import React from "react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="container mx-auto flex items-center justify-between px-4 py-3">
+    <div className="relative container mx-auto flex items-center justify-between px-4 py-3">
       {/* Logo */}
       <div className="flex flex-col items-center gap-1">
         <Image
@@ -23,31 +28,27 @@ const Navbar = () => {
         </h2>
       </div>
 
-      {/* Navigation */}
-      <nav>
+      {/* Desktop Navigation */}
+      <nav className="hidden md:block">
         <ul className="flex items-center gap-8 text-sm font-medium text-[#29252B]">
           <li className="cursor-pointer font-semibold text-[#722F52]">Home</li>
-
           <li className="cursor-pointer transition-colors hover:text-[#722F52]">
             About Us
           </li>
-
           <li className="cursor-pointer transition-colors hover:text-[#722F52]">
             Services
           </li>
-
           <li className="cursor-pointer transition-colors hover:text-[#722F52]">
             Your Booking
           </li>
-
           <li className="cursor-pointer transition-colors hover:text-[#722F52]">
             Contact Us
           </li>
         </ul>
       </nav>
 
-      {/* Authentication */}
-      <div className="flex items-center gap-3">
+      {/* Desktop Authentication */}
+      <div className="hidden items-center gap-3 md:flex">
         <button className="rounded-xl border border-[#722F52] px-5 py-2 text-sm font-semibold text-[#722F52] transition-all duration-300 hover:bg-[#722F52] hover:text-white">
           Sign In
         </button>
@@ -56,6 +57,49 @@ const Navbar = () => {
           Sign Up
         </button>
       </div>
+
+      {/* Mobile Hamburger */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="rounded-lg p-2 text-[#722F52] transition hover:bg-[#F5EAF0] md:hidden"
+        aria-label="Toggle navigation menu"
+        aria-expanded={isOpen}
+      >
+        {isOpen ? <X size={26} /> : <Menu size={26} />}
+      </button>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="absolute left-0 top-full z-50 w-full border-t border-[#722F52]/10 bg-white px-5 py-6 shadow-xl md:hidden">
+          <ul className="flex flex-col gap-5 text-sm font-medium text-[#29252B]">
+            <li className="cursor-pointer font-semibold text-[#722F52]">
+              Home
+            </li>
+            <li className="cursor-pointer transition-colors hover:text-[#722F52]">
+              About Us
+            </li>
+            <li className="cursor-pointer transition-colors hover:text-[#722F52]">
+              Services
+            </li>
+            <li className="cursor-pointer transition-colors hover:text-[#722F52]">
+              Your Booking
+            </li>
+            <li className="cursor-pointer transition-colors hover:text-[#722F52]">
+              Contact Us
+            </li>
+          </ul>
+
+          <div className="mt-6 flex flex-col gap-3">
+            <button className="rounded-xl border border-[#722F52] px-5 py-3 text-sm font-semibold text-[#722F52] transition hover:bg-[#722F52] hover:text-white">
+              Sign In
+            </button>
+
+            <button className="rounded-xl bg-[#722F52] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#5B2441]">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

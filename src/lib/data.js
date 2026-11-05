@@ -31,7 +31,7 @@ export const reasonsDatas = async () => {
   const data = await res.json();
   return data;
 };
- export const testimonialsDatas = async () => {
+export const testimonialsDatas = async () => {
   const res = await fetch("http://localhost:5000/testimonials");
   if (!res.ok) {
     throw new Error("failed to fetche the services dataa");
@@ -40,8 +40,17 @@ export const reasonsDatas = async () => {
   const data = await res.json();
   return data;
 };
- export const howweworkDatas = async () => {
+export const howweworkDatas = async () => {
   const res = await fetch("http://localhost:5000/howwework");
+  if (!res.ok) {
+    throw new Error("failed to fetche the services dataa");
+  }
+
+  const data = await res.json();
+  return data;
+};
+export const faqDatas = async () => {
+  const res = await fetch("http://localhost:5000/faq");
   if (!res.ok) {
     throw new Error("failed to fetche the services dataa");
   }

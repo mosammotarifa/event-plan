@@ -8,19 +8,19 @@ const Testimonials = async () => {
   const testimonials = await testimonialsDatas();
 
   return (
-    <section className="overflow-hidden bg-[#FAF8F6] py-20">
+    <section className="overflow-hidden bg-[#FAF8F6] py-12 sm:py-16 md:py-20">
       <div className="container mx-auto px-4">
         {/* Section Heading */}
-        <div className="mx-auto mb-14 max-w-2xl text-center">
-          <p className="text-sm font-semibold tracking-[0.25em] text-[#722F52]">
+        <div className="mx-auto mb-10 sm:mb-12 md:mb-14 max-w-2xl text-center">
+          <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.25em] text-[#722F52]">
             KIND WORDS
           </p>
 
-          <h2 className="mt-3 text-3xl font-bold text-[#29252B] md:text-4xl">
+          <h2 className="mt-3 text-2xl sm:text-3xl font-bold text-[#29252B] md:text-4xl">
             Stories From Our Happy Clients
           </h2>
 
-          <p className="mt-4 leading-7 text-gray-600">
+          <p className="mt-4 text-sm sm:text-base leading-7 text-gray-600">
             Every celebration leaves behind a beautiful memory. Here are some
             words from the people who trusted us to make their special moments
             unforgettable.
@@ -31,20 +31,20 @@ const Testimonials = async () => {
         {testimonials?.length > 0 ? (
           <TestimonialMarquee testimonials={testimonials} />
         ) : (
-          <p className="py-10 text-center text-gray-500">
+          <p className="py-8 sm:py-10 text-center text-sm sm:text-base text-gray-500">
             No reviews available yet.
           </p>
         )}
 
         {/* Bottom CTA */}
-        <div className="mt-14 text-center">
-          <p className="mb-5 text-lg font-semibold text-[#29252B]">
+        <div className="mt-10 sm:mt-12 md:mt-14 text-center">
+          <p className="mb-5 text-base sm:text-lg font-semibold text-[#29252B]">
             Have we made your special day memorable?
           </p>
 
           <Link
             href="/feedback"
-            className="inline-flex items-center gap-2 rounded-full bg-[#722F52] px-7 py-3 font-semibold text-white transition hover:bg-[#59233F]"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#722F52] px-5 sm:px-7 py-3 text-sm sm:text-base font-semibold text-white transition hover:bg-[#59233F]"
           >
             <MessageCircleHeart size={19} />
             Share Your Experience
