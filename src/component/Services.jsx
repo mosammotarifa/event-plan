@@ -54,7 +54,7 @@ const Services = async () => {
                   </p>
 
                   <Link
-                    href={`/services/${service.id}`}
+                    href={`/services/${service.serviceId}`}
                     className="inline-flex items-center gap-2 font-semibold text-white transition-all group-hover:gap-3"
                   >
                     Explore Service

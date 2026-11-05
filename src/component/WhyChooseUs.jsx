@@ -1,14 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  CalendarCheck,
-  Wallet,
-  Users,
-  Sparkles,
-  ArrowUpRight,
-  CheckCircle2,
-} from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Icon } from "lucide-react";
 import { reasonsDatas } from "@/lib/data";
 
 const WhyChooseUs = async () => {
@@ -70,7 +63,7 @@ const WhyChooseUs = async () => {
               {/* Reasons */}
               <div className="mt-7 sm:mt-9 grid gap-5 sm:gap-6 sm:grid-cols-2">
                 {reasons.map((reason) => {
-                  const Icon = reason.icon;
+                  // const Icon = reason.icon;
 
                   return (
                     <div

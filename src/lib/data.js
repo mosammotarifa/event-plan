@@ -22,6 +22,15 @@ export const servicesDatas = async () => {
   const data = await res.json();
   return data;
 };
+export const servicesDatasId = async (servicesId) => {
+  const res = await fetch(`http://localhost:5000/services/${servicesId}`);
+  if (!res.ok) {
+    throw new Error("failed to fetche the services dataa");
+  }
+  const data = await res.json();
+  return data;
+};
+
 export const reasonsDatas = async () => {
   const res = await fetch("http://localhost:5000/reasons");
   if (!res.ok) {
