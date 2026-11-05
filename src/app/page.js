@@ -1,4 +1,6 @@
+import Achievenments from '@/component/Achievenments';
 import Banner from '@/component/Banner';
+import Events from '@/component/Events';
 
 import React from 'react';
 
@@ -7,6 +9,8 @@ const Home = () => {
     <div>
     
      <Banner/>
+     <Achievenments/>
+     <Events/>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 
-
 const Banner = () => {
   return (
     <div className="relative h-[500px] w-full overflow-hidden rounded-2xl">
