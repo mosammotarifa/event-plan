@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { useSession } from "@/lib/auth.client";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session } = useSession();
 
   return (
     <div className="relative container mx-auto flex items-center justify-between px-4 py-3">
@@ -49,24 +51,42 @@ const Navbar = () => {
               Services
             </li>
           </Link>
-          <li className="cursor-pointer transition-colors hover:text-[#722F52]">
-            Your Booking
-          </li>
-          <li className="cursor-pointer transition-colors hover:text-[#722F52]">
-            Contact Us
-          </li>
+          <Link href={"/your-booking"}>
+            <li className="cursor-pointer transition-colors hover:text-[#722F52]">
+              Your Booking
+            </li>
+          </Link>
+          <Link href={"/contact-us"}>
+            <li className="cursor-pointer transition-colors hover:text-[#722F52]">
+              Contact Us
+            </li>
+          </Link>
+          <Link href={"/dashboaard/meetings"}>
+            <li className="cursor-pointer transition-colors hover:text-[#722F52]">
+              dashboaard
+            </li>
+          </Link>
         </ul>
       </nav>
 
       {/* Desktop Authentication */}
       <div className="hidden items-center gap-3 md:flex">
-        <button className="rounded-xl border border-[#722F52] px-5 py-2 text-sm font-semibold text-[#722F52] transition-all duration-300 hover:bg-[#722F52] hover:text-white">
-          Sign In
-        </button>
-
-        <button className="rounded-xl bg-[#722F52] px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-[#5B2441] hover:shadow-md">
-          Sign Up
-        </button>
+        {session?.user ? (
+          <div>Logout </div>
+        ) : (
+          <div>
+            <Link href={"/sign-in"}>
+              <button className="rounded-xl border border-[#722F52] px-5 py-2 text-sm font-semibold text-[#722F52] transition-all duration-300 hover:bg-[#722F52] hover:text-white">
+                Sign In
+              </button>
+            </Link>
+            <Link href={"/sign-up"}>
+              <button className="rounded-xl bg-[#722F52] px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-[#5B2441] hover:shadow-md">
+                Sign Up
+              </button>
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Mobile Hamburger */}
@@ -101,13 +121,22 @@ const Navbar = () => {
           </ul>
 
           <div className="mt-6 flex flex-col gap-3">
-            <button className="rounded-xl border border-[#722F52] px-5 py-3 text-sm font-semibold text-[#722F52] transition hover:bg-[#722F52] hover:text-white">
-              Sign In
-            </button>
-
-            <button className="rounded-xl bg-[#722F52] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#5B2441]">
-              Sign Up
-            </button>
+            {session?.user ? (
+              <div>Logout</div>
+            ) : (
+              <div>
+                <Link href={"/sign-in"}>
+                  <button className="rounded-xl border border-[#722F52] px-5 py-3 text-sm font-semibold text-[#722F52] transition hover:bg-[#722F52] hover:text-white">
+                    Sign In
+                  </button>
+                </Link>
+                <Link href={"/sign-up"}>
+                  <button className="rounded-xl bg-[#722F52] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#5B2441]">
+                    Sign Up
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       )}

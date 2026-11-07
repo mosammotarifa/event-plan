@@ -56,7 +56,7 @@ const CTA = async () => {
             {/* CTA Buttons */}
             <div className="mt-7 flex flex-col items-start gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <Link
-                href="/contact"
+                href="/plan-your-event"
                 className="group inline-flex items-center gap-3 rounded-full bg-[#E8A7C1] px-5 py-3 text-xs font-semibold text-[#351D2B] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white sm:px-7 sm:py-4 sm:text-sm"
               >
                 Plan Your Event

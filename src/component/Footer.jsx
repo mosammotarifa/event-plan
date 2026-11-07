@@ -63,12 +63,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/booking" className="hover:text-[#722F52]">
+                <Link href="/your-booking" className="hover:text-[#722F52]">
                   Your Booking
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#722F52]">
+                <Link href="/contact-us" className="hover:text-[#722F52]">
                   Contact Us
                 </Link>
               </li>
@@ -108,6 +108,11 @@ const Footer = () => {
               <li>
                 <Link href="/events/corporate" className="hover:text-[#722F52]">
                   Corporate Events
+                </Link>
+              </li>
+              <li>
+                <Link href="/events/corporate" className="hover:text-[#722F52]">
+                 etc.
                 </Link>
               </li>
             </ul>

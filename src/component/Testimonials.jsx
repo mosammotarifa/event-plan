@@ -1,8 +1,8 @@
 import React from "react";
 import { testimonialsDatas } from "@/lib/data";
 import TestimonialMarquee from "./TestimonialMarquee";
-import Link from "next/link";
-import { ArrowUpRight, MessageCircleHeart } from "lucide-react";
+
+import TestimonialFormToggle from "./TestimonialFormToggle";
 
 const Testimonials = async () => {
   const testimonials = await testimonialsDatas();
@@ -37,19 +37,9 @@ const Testimonials = async () => {
         )}
 
         {/* Bottom CTA */}
-        <div className="mt-10 sm:mt-12 md:mt-14 text-center">
-          <p className="mb-5 text-base sm:text-lg font-semibold text-[#29252B]">
-            Have we made your special day memorable?
-          </p>
 
-          <Link
-            href="/feedback"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#722F52] px-5 sm:px-7 py-3 text-sm sm:text-base font-semibold text-white transition hover:bg-[#59233F]"
-          >
-            <MessageCircleHeart size={19} />
-            Share Your Experience
-            <ArrowUpRight size={18} />
-          </Link>
+        <div className="mt-10 sm:mt-12 md:mt-14 text-center">
+          <TestimonialFormToggle />
         </div>
       </div>
     </section>

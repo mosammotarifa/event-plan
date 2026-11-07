@@ -90,7 +90,7 @@ const WhyChooseUs = async () => {
 
               {/* CTA */}
               <Link
-                href="/contact"
+                href="/plan-your-event"
                 className="mt-8 sm:mt-10 inline-flex items-center justify-center gap-2 sm:gap-3 rounded-full bg-[#722F52] px-5 sm:px-7 py-3 sm:py-3.5 text-sm sm:text-base font-semibold text-white transition duration-300 hover:bg-[#542039] hover:shadow-lg"
               >
                 Let's Plan Your Event

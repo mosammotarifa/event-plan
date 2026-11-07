@@ -32,7 +32,7 @@ const AboutHero = () => {
             {/* Buttons */}
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
-                href="/contact"
+                href="/contact-us"
                 className="inline-flex items-center gap-2 rounded-full bg-[#722F52] px-7 py-3.5 text-sm font-medium text-white transition hover:bg-[#59213F]"
               >
                 Let's Talk
@@ -40,7 +40,7 @@ const AboutHero = () => {
               </Link>
 
               <Link
-                href="/events"
+                href="/services"
                 className="rounded-full border border-[#722F52] px-7 py-3.5 text-sm font-medium text-[#722F52] transition hover:bg-[#722F52] hover:text-white"
               >
                 Explore Our Events

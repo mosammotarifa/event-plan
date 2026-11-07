@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Banner = () => {
@@ -25,9 +26,7 @@ const Banner = () => {
 
         <h1 className="text-3xl font-bold text-white sm:text-4xl md:text-6xl">
           Your Moments, Our Passion,
-          <span className="block text-[#D9A441]">
-            Perfectly Planned.
-          </span>
+          <span className="block text-[#D9A441]">Perfectly Planned.</span>
         </h1>
 
         <p className="mt-5 max-w-xl text-sm text-white/90 sm:text-base">
@@ -35,9 +34,11 @@ const Banner = () => {
           dream celebrations to life.
         </p>
 
-        <button className="mt-8 rounded-xl bg-[#722F52] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#5B2441] sm:text-base">
-          Plan Your Event
-        </button>
+        <Link href={"/plan-your-event"}>
+          <button className="mt-8 rounded-xl bg-[#722F52] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#5B2441] sm:text-base">
+            Plan Your Event
+          </button>
+        </Link>
       </div>
     </div>
   );

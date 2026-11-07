@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Plus, Minus, MessageCircle } from "lucide-react";
+import Link from "next/link";
 
 const FAQAccordion = ({ faqData }) => {
   const [activeId, setActiveId] = useState(1);
@@ -46,10 +47,11 @@ const FAQAccordion = ({ faqData }) => {
                   Our team is always ready to help you plan your next special
                   event.
                 </p>
-
-                <button className="mt-6 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-[#722F52] transition hover:bg-gray-100 sm:text-base">
-                  Contact Us
-                </button>
+                <Link href={'/contact-us'}>
+                  <button className="mt-6 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-[#722F52] transition hover:bg-gray-100 sm:text-base">
+                    Contact Us
+                  </button>
+                </Link>
               </div>
             </div>
 

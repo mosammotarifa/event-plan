@@ -1,5 +1,6 @@
 import { howweworkDatas } from "@/lib/data";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 const Howwework = async () => {
@@ -52,13 +53,13 @@ const Howwework = async () => {
 
           {/* CTA */}
           <div className="mt-10 sm:mt-12 md:mt-14 text-center">
-            <a
-              href="/contact"
+            <Link
+              href="/plan-your-event"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#722F52] px-6 sm:px-7 py-3 text-sm sm:text-base font-semibold text-white transition hover:bg-[#59233F]"
             >
               Let's Plan Your Event
               <ArrowUpRight size={19} />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
