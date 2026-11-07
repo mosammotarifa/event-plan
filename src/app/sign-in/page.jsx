@@ -2,67 +2,38 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
-import {
-  Eye,
-  EyeOff,
-  Mail,
-  LockKeyhole,
-  Loader2,
-  ArrowLeft,
-} from "lucide-react";
+import { Eye, EyeOff, Mail, LockKeyhole, ArrowLeft } from "lucide-react";
 import { signIn } from "@/lib/auth.client";
 
 export default function SignInPage() {
-  const router = useRouter();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [socialLoading, setSocialLoading] = useState("");
-  const [error, setError] = useState("");
-
-  const handleSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
 
-    try {
-      const result = await signIn.email({
-        email,
-        password,
-      });
+    const formData = new FormData(e.currentTarget);
+    const userData = Object.fromEntries(formData.entries());
 
-      if (result.error) {
-        throw new Error(result.error.message);
-      }
+    const { data, error } = await signIn.email({
+      email: userData.email,
+      password: userData.password,
+      callbackURL: "/",
+    });
 
-      router.push("/");
-      router.refresh();
-    } catch (err) {
-      setError(err.message || "Unable to sign in.");
-    } finally {
-      setLoading(false);
-    }
+    console.log(data, error);
   };
-
-  const handleSocialLogin = async (provider) => {
-    setError("");
-    setSocialLoading(provider);
-
-    try {
-      await authClient.signIn.social({
-        provider,
-        callbackURL: "/",
-      });
-    } catch (err) {
-      setError(err.message || "Social login failed.");
-      setSocialLoading("");
-    }
+  const handelsignInGoogle = async () => {
+    const data = await signIn.social({
+      provider: "google",
+    });
   };
-
+  const handelsignInGithut = async () => {
+    const data = await signIn.social({
+        provider: "github"
+    })
+}
   return (
     <main className="min-h-screen bg-[#FAF8F6] lg:grid lg:grid-cols-2">
       {/* Left: Wedding Photography */}
@@ -133,13 +104,8 @@ export default function SignInPage() {
             </p>
           </div>
 
-          {error && (
-            <div className="mb-5 rounded-lg bg-red-50 p-3 text-sm text-red-600">
-              {error}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Email */}
+          <form onSubmit={onSubmit} className="space-y-5">
             <div>
               <label className="mb-2 block text-sm font-medium text-[#29252B]">
                 Email Address
@@ -157,12 +123,14 @@ export default function SignInPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
                   autoComplete="email"
+                  name="email"
                   required
                   className="w-full rounded-lg border border-[#E6DDE1] bg-white py-3.5 pl-12 pr-4 text-sm outline-none focus:border-[#722F52] focus:ring-2 focus:ring-[#722F52]/10"
                 />
               </div>
             </div>
 
+            {/* Password */}
             <div>
               <div className="mb-2 flex justify-between">
                 <label className="text-sm font-medium text-[#29252B]">
@@ -182,6 +150,7 @@ export default function SignInPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
                   autoComplete="current-password"
+                  name="password"
                   required
                   className="w-full rounded-lg border border-[#E6DDE1] bg-white py-3.5 pl-12 pr-12 text-sm outline-none focus:border-[#722F52] focus:ring-2 focus:ring-[#722F52]/10"
                 />
@@ -197,53 +166,43 @@ export default function SignInPage() {
               </div>
             </div>
 
+            {/* Sign In Button */}
             <button
-              disabled={loading || !!socialLoading}
-              className="flex w-full items-center justify-center gap-2 bg-[#722F52] py-4 text-sm font-semibold tracking-wide text-white transition hover:bg-[#5E2543] disabled:opacity-60"
+              type="submit"
+              className="flex w-full items-center justify-center bg-[#722F52] py-4 text-sm font-semibold tracking-wide text-white transition hover:bg-[#5E2543]"
             >
-              {loading ? (
-                <Loader2 className="animate-spin" size={19} />
-              ) : (
-                "SIGN IN"
-              )}
+              SIGN IN
             </button>
           </form>
 
+          {/* Divider */}
           <div className="my-7 flex items-center gap-4">
             <div className="h-px flex-1 bg-[#E6DDE1]" />
             <span className="text-xs text-[#999099]">OR SIGN IN WITH</span>
             <div className="h-px flex-1 bg-[#E6DDE1]" />
           </div>
 
+          {/* Social Buttons */}
           <div className="grid grid-cols-2 gap-3">
             <button
+              onClick={handelsignInGoogle}
               type="button"
-              disabled={loading || !!socialLoading}
-              onClick={() => handleSocialLogin("google")}
-              className="flex items-center justify-center gap-2 border border-[#E6DDE1] bg-white py-3 text-sm font-medium text-[#29252B] hover:border-[#722F52] disabled:opacity-50"
+              className="flex items-center justify-center gap-2 border border-[#E6DDE1] bg-white py-3 text-sm font-medium text-[#29252B] hover:border-[#722F52]"
             >
-              {socialLoading === "google" ? (
-                <Loader2 size={17} className="animate-spin" />
-              ) : (
-                <span className="font-bold text-[#4285F4]">G</span>
-              )}
+              <span className="font-bold text-[#4285F4]">G</span>
               Google
             </button>
 
             <button
+            onClick={handelsignInGithut}
               type="button"
-              disabled={loading || !!socialLoading}
-              onClick={() => handleSocialLogin("github")}
-              className="flex items-center justify-center gap-2 border border-[#E6DDE1] bg-white py-3 text-sm font-medium text-[#29252B] hover:border-[#722F52] disabled:opacity-50"
+              className="flex items-center justify-center gap-2 border border-[#E6DDE1] bg-white py-3 text-sm font-medium text-[#29252B] hover:border-[#722F52]"
             >
-              {socialLoading === "github" ? (
-                <Loader2 size={17} className="animate-spin" />
-              ) : (
-                <span className="font-bold">GitHub</span>
-              )}
+              <span className="font-bold">GitHub</span>
             </button>
           </div>
 
+          {/* Sign Up Link */}
           <p className="mt-8 text-center text-sm text-[#777078]">
             New to BLISS HAUS?
             <Link
